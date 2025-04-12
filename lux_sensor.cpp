@@ -8,12 +8,12 @@ const char* topic_lux = "interruptor/lux";
 uint32_t lastLuxReading = 0;
 
 void initLuxSensor() {
-  Wire.begin(2, 1);
+  Wire.begin(2, 1); //Pinos de comunicação SLA e SDA
   lightMeter.begin();
 }
 
 void readAndPublishLux() {
-  if (millis() - lastLuxReading > 2000) {
+  if (millis() - lastLuxReading > 5000) { //Quão frequentemente o valor de lux é atualizado em milésimos de segundo
     lastLuxReading = millis();
     float lux = lightMeter.readLightLevel();
     char luxStr[8];
