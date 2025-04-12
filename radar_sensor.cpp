@@ -1,3 +1,8 @@
+//As leituras do radar são feitas aqui, se presença é detectada é publicado no tópico interruptor/radar
+//O tempo entre as leituras pode ser ajustado na função readAndPublishRadar
+//São feitas leituras da distancia e da energia do objeto rastreado, os valores são convertidos em strings
+//e publicados em seus respectivos tópicos
+//É feita a inicialização de um novo serial aqui para a comunicação com o microcontrolador do radar.
 #include "radar_sensor.h"
 #include "mqtt_manager.h"
 #include <ld2410.h>
@@ -16,7 +21,7 @@ void initRadar() {
   if (radar.begin(RADAR_SERIAL)) {
     MONITOR_SERIAL.println(F("OK"));
   } else {
-    MONITOR_SERIAL.println(F("not connected"));
+    MONITOR_SERIAL.println(F("NÃO CONECTADO"));
   }
 }
 

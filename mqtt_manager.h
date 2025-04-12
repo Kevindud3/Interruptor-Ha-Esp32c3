@@ -1,3 +1,4 @@
+//As funções do mqtt são definidas nesse cabeçalho
 #pragma once
 #include <PubSubClient.h>
 

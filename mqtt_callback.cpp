@@ -1,3 +1,5 @@
+//Mensagens do MQTT são recebidas aqui, nossas mensagens são de texto simples a função callback aqui lé a mensagem
+//e a reescreve na variável message que é uma string. E a imprime para debug.
 #include "mqtt_callback.h"
 #include <Arduino.h>
 

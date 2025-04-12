@@ -1,3 +1,4 @@
+//A conexão wifi é feita aqui
 #include "wifi_manager.h"
 #include <WiFi.h>
 

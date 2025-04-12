@@ -1,3 +1,4 @@
+//Arquivo main do Arduino onde todas as funções são chamadas e o serial é iniciado
 #include "wifi_manager.h"
 #include "mqtt_manager.h"
 #include "radar_sensor.h"
