@@ -11,10 +11,6 @@ ld2410 radar;
 uint32_t lastReading = 0;
 
 void initRadar() {
-  MONITOR_SERIAL.print(F("\nConnect LD2410 radar TX to GPIO:"));
-  MONITOR_SERIAL.println(RADAR_RX_PIN);
-  MONITOR_SERIAL.print(F("LD2410 radar sensor initialising: "));
-
   RADAR_SERIAL.begin(256000, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
 
   if (radar.begin(RADAR_SERIAL)) {
@@ -25,7 +21,7 @@ void initRadar() {
 }
 
 void readAndPublishRadar() {
-  if (millis() - lastReading > 1000) {
+  if (millis() - lastReading > 30000) { //Quão frequentemente o valores do radar são atualizados em milésimos de segundo
     lastReading = millis();
     radar.read();
 
