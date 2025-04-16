@@ -1,0 +1,48 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+mqtt:
+  switch:
+    - name: "Lampada"
+      unique_id: sensor_lux
+      state_topic: "interruptor/switch"
+      command_topic: "interruptor/switch"
+      payload_on: "1"
+      payload_off: "0"
+  sensor:
+    - name: "Lux"
+      unique_id: sensor_lux
+      state_topic: "interruptor/lux"
+    - name: "Presença Estacionária Distância"
+      unique_id: sensor_est_dis
+      state_topic: "interruptor/radar/estacionario/distancia"
+    - name: "Presença Estacionária Energia"
+      unique_id: sensor_est_ene
+      state_topic: "interruptor/radar/estacionario/energia"
+    - name: "Presença Em Movimento Distância"
+      unique_id: sensor_mov_dis
+      state_topic: "interruptor/radar/movendo/distancia"
+    - name: "Presença Em Movimento Energia"
+      unique_id: sensor_mov_ene
+      state_topic: "interruptor/radar/movendo/energia"
+    - name: "Presença Detectada"
+      unique_id: sensor_mov_pre
+      state_topic: "interruptor/radar"
+  number:
+    - name: "Brilho"
+      unique_id: mqtt_slider_Brilho
+      state_topic: "lampada/brilho"
+      command_topic: "lampada/brilho"
+      min: 0
+      max: 100
+      step: 1
+      retain: false
+      unit_of_measurement: "%"
