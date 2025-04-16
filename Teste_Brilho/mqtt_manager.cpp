@@ -18,8 +18,7 @@ void setupMQTT() {
     Serial.println("Conectando ao MQTT...");
     if (client.connect("ESP32Client1", mqtt_user, mqtt_password)) { //trocar o nome do cliente caso haja mais de 1 esp
       Serial.println("Conectado ao MQTT");
-//      client.subscribe("lampada/RS1");
-      client.subscribe("lampada/RS2");
+      client.subscribe("lampada/brilho");
     } else {
       Serial.print("Falha, rc=");
       Serial.print(client.state());

@@ -6,11 +6,9 @@
 // Definindo pinos e frequências
 const int pwmFreq = 20000;  // Frequência de 20kHz
 const int pwmResolution = 8; // Resolução de 8 bits (0-255)
-const int pinoRS1 = 33;
 const int pinoRS2 = 32;
 
 void setupPWM() {
-  ledcAttach(pinoRS1, pwmFreq, pwmResolution);
   ledcAttach(pinoRS2, pwmFreq, pwmResolution);
 }
 
@@ -30,10 +28,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   // Mapear o brilho de 0–100 para 0–255 (escala de 8 bits)
   int pwm = (255.0 / 100.0) * brilho;
 
-//  if (strcmp(topic, "lampada/RS1") == 0) {
-//   ledcWrite(pinoRS1, pwm);
-//  }
-
-  if (strcmp(topic, "lampada/RS2") == 0) {
+  if (strcmp(topic, "lampada/brilho") == 0) {
     ledcWrite(pinoRS2, pwm);
   }
