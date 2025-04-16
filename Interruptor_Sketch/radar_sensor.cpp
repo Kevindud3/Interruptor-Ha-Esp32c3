@@ -26,7 +26,7 @@ void initRadar() {
 }
 
 void readAndPublishRadar() {
-  if (millis() - lastReading > 30000) { //Quão frequentemente o valores do radar são atualizados em milésimos de segundo
+  if (millis() - lastReading > 1000) { //Quão frequentemente o valores do radar são atualizados em milésimos de segundo
     lastReading = millis();
     radar.read();
 
