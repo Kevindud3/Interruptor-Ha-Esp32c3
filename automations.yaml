@@ -1,0 +1,61 @@
+ id: '1743357707824'
+  alias: Detector de Presença
+  description: Desliga lampada se presença detectada
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.presenca_detectada
+    from:
+    to:
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.presenca_detectada
+        state: Presenca Detectada
+      sequence:
+      - action: switch.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.lampada
+    - conditions:
+      - condition: state
+        entity_id: sensor.presenca_detectada
+        state: Presenca Não Detectada
+      sequence:
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.lampada
+  mode: single
+- id: '1745186830191'
+  alias: Dimmer
+  description: Configura Brilho baseado em um valor alvo
+  triggers:
+  - entity_id: sensor.lux
+    trigger: state
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.lux
+    above: 0
+  actions:
+  - target:
+      entity_id: number.brilho
+    data:
+      value: "{% if states(light_sensor)|int > maxB %}\n  0\n{% else %}\n  {{ (( slope
+        * states(light_sensor)|int ) + constant)|round }}\n{% endif %}\n"
+    action: number.set_value
+  variables:
+    light_sensor: sensor.lux
+    maxB: 400
+    minB: 0
+    light_value_1: 0
+    light_value_2: 100
+    light1: '{{ light_value_1 * 1 }}'
+    light2: '{{ light_value_2 * 1 }}'
+    slope: '{{ ( light1 - light2 ) / ( maxB - minB ) }}'
+    constant: '{{ light1 - ( slope * maxB ) }}'
+  mode: single

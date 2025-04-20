@@ -31,3 +31,4 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, "lampada/brilho") == 0) {
     ledcWrite(pinoRS2, pwm);
   }
+}
