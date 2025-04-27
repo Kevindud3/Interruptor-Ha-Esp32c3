@@ -4,8 +4,6 @@
 //e publicados em seus respectivos tópicos
 //É feita a inicialização de um novo serial aqui para a comunicação com o microcontrolador do radar.
 #include "radar_sensor.h"
-#include "mqtt_manager.h"
-#include <ld2410.h>
 
 #define MONITOR_SERIAL Serial
 #define RADAR_SERIAL Serial1
@@ -14,6 +12,7 @@
 
 ld2410 radar;
 uint32_t lastReading = 0;
+bool presenceState = false;  // Flag to track the presence state
 
 void initRadar() {
   RADAR_SERIAL.begin(256000, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
@@ -26,13 +25,23 @@ void initRadar() {
 }
 
 void readAndPublishRadar() {
-  if (millis() - lastReading > 1000) { //Quão frequentemente o valores do radar são atualizados em milésimos de segundo
+  if (millis() - lastReading > 1000) { // Update frequency in milliseconds
     lastReading = millis();
     radar.read();
 
-    if (radar.presenceDetected()) {
-      client.publish("interruptor/radar", "Presenca Detectada");
+    bool presenceDetected = radar.presenceDetected();
+    
+    // If presence changes, publish accordingly
+    if (presenceDetected && !presenceState) {
+      client.publish("interruptor/radar", "Presença Detectada");
+      presenceState = true;  // Update the state to "presence detected"
+    } 
+    else if (!presenceDetected && presenceState) {
+      client.publish("interruptor/radar", "Presença Não Detectada");
+      presenceState = false;  // Update the state to "no presence"
+    }
 
+    if (presenceDetected) {
       if (radar.stationaryTargetDetected()) {
         char distStr[8], energyStr[8];
         itoa(radar.stationaryTargetDistance(), distStr, 10);
@@ -48,8 +57,6 @@ void readAndPublishRadar() {
         client.publish("interruptor/radar/movendo/distancia", distStr);
         client.publish("interruptor/radar/movendo/energia", energyStr);
       }
-    } else {
-      client.publish("interruptor/radar", "Presenca Não Detectada");
     }
   }
 }

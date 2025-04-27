@@ -3,9 +3,6 @@
 //A função readAndPublishLux checa se a última leitura foi a mais de 5 segundos atrás
 //A leitura é feita com a função readLightLevel e esse valor é convertido em uma string e postado no tópico interruptor/lux
 #include "lux_sensor.h"
-#include "mqtt_manager.h"
-#include <BH1750.h>
-#include <Wire.h>
 
 BH1750 lightMeter;
 const char* topic_lux = "interruptor/lux";

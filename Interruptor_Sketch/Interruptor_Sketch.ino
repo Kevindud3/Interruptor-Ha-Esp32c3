@@ -4,10 +4,14 @@
 #include "radar_sensor.h"
 #include "lux_sensor.h"
 
+const int pinoRELE = 0;
+
 void setup() {
+  pinMode(pinoRELE, OUTPUT);
   Serial.begin(115200);
   connectToWiFi();
   setupMQTT();
+  setupPWM();
   initLuxSensor();
   initRadar();
 }

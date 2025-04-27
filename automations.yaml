@@ -1,35 +1,19 @@
- id: '1743357707824'
-  alias: Detector de Presença
-  description: Desliga lampada se presença detectada
+- id: '1743357707824'
+  alias: Detector de Presença (Ligar)
+  description: Liga a lampada se presença detectada
   triggers:
-  - trigger: state
-    entity_id:
+  - entity_id:
     - sensor.presenca_detectada
-    from:
-    to:
+    from: Presença Não Detectada
+    to: Precença Detectada
+    trigger: state
   conditions: []
   actions:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: sensor.presenca_detectada
-        state: Presenca Detectada
-      sequence:
-      - action: switch.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: switch.lampada
-    - conditions:
-      - condition: state
-        entity_id: sensor.presenca_detectada
-        state: Presenca Não Detectada
-      sequence:
-      - action: switch.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: switch.lampada
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.lampada_2
   mode: single
 - id: '1745186830191'
   alias: Dimmer
@@ -58,4 +42,51 @@
     light2: '{{ light_value_2 * 1 }}'
     slope: '{{ ( light1 - light2 ) / ( maxB - minB ) }}'
     constant: '{{ light1 - ( slope * maxB ) }}'
+  mode: single
+- id: '1745710625710'
+  alias: Sensor de Presença (Desligar)
+  description: Desliga a lampada se presença não detectada
+  triggers:
+  - entity_id:
+    - sensor.presenca_detectada
+    to: Presença Não Detectada
+    trigger: state
+    from: Presença Detectada
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.lampada_2
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: '0'
+      topic: interruptor/sleep
+      payload: '1'
+  mode: single
+- id: '1745710717016'
+  alias: Dormir
+  description: Se dormir
+  triggers:
+  - entity_id:
+    - sensor.presenca_detectada
+    to: Dormindo
+    trigger: state
+    from: Presença Não Detectada
+  conditions: []
+  actions:
+  - action: mqtt.publish
+    metadata: {}
+    data:
+      evaluate_payload: false
+      qos: '0'
+      topic: interruptor/sleep
+      payload: '0'
   mode: single

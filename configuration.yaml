@@ -12,7 +12,7 @@ scene: !include scenes.yaml
 mqtt:
   switch:
     - name: "Lampada"
-      unique_id: sensor_lux
+      unique_id: lampada
       state_topic: "interruptor/switch"
       command_topic: "interruptor/switch"
       payload_on: "1"
@@ -21,6 +21,7 @@ mqtt:
     - name: "Lux"
       unique_id: sensor_lux
       state_topic: "interruptor/lux"
+      device_class: illuminance
     - name: "Presença Estacionária Distância"
       unique_id: sensor_est_dis
       state_topic: "interruptor/radar/estacionario/distancia"

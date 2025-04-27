@@ -1,7 +1,5 @@
 //A conexão com o cliente MQTT é feita aqui, a inscrição de tópicos de leitura é feita aqui.
 #include "mqtt_manager.h"
-#include "mqtt_callback.h"
-#include <WiFi.h>
 
 const char* mqtt_server = "192.168.88.253";
 const char* mqtt_user = "mosquito";
@@ -18,8 +16,9 @@ void setupMQTT() {
     Serial.println("Conectando ao MQTT...");
     if (client.connect("ESP32Client", mqtt_user, mqtt_password)) {
       Serial.println("Conectado ao MQTT");
-//      client.subscribe("interruptor/lux");
-//      client.subscribe("interruptor/radar");
+      client.subscribe("lampada/brilho");
+      client.subscribe("interruptor/switch");
+      client.subscribe("interruptor/sleep");
     } else {
       Serial.print("Falha, rc=");
       Serial.print(client.state());

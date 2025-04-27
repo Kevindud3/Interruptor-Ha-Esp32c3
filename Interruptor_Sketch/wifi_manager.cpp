@@ -1,6 +1,5 @@
 //A conexão wifi é feita aqui
 #include "wifi_manager.h"
-#include <WiFi.h>
 
 const char* ssid = "HA AP";
 const char* password = "12345678";
