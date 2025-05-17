@@ -2725,16 +2725,16 @@
 		(uuid "869c5cfd-7948-4090-a63d-74f93c4486d7")
 	)
 	(no_connect
+		(at 107.95 27.94)
+		(uuid "b48a897f-26a4-46be-ad4c-e595fdbe3f29")
+	)
+	(no_connect
 		(at 58.42 100.33)
 		(uuid "cbeb0536-462f-4e42-a459-e291271a39d6")
 	)
 	(no_connect
 		(at 66.04 100.33)
 		(uuid "cd3eeba0-b1b2-4c2c-8ae0-44d98eabf0ce")
-	)
-	(no_connect
-		(at 68.58 100.33)
-		(uuid "db96b508-cc50-4db2-b690-932e9bc5f460")
 	)
 	(wire
 		(pts
@@ -3448,6 +3448,16 @@
 	)
 	(wire
 		(pts
+			(xy 68.58 102.87) (xy 66.04 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e52591c8-1b23-4d1e-8166-035a7bd9ccdd")
+	)
+	(wire
+		(pts
 			(xy 162.56 72.39) (xy 162.56 68.58)
 		)
 		(stroke
@@ -3525,6 +3535,16 @@
 			(type default)
 		)
 		(uuid "f9520057-64f7-438b-a3b7-c533dd924d9e")
+	)
+	(wire
+		(pts
+			(xy 68.58 102.87) (xy 68.58 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe5a1169-37ad-4f68-ac1f-09a1b7992c4a")
 	)
 	(global_label "Relé Out"
 		(shape input)
@@ -3610,6 +3630,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VCC"
+		(shape input)
+		(at 66.04 102.87 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5c3fe939-989e-4785-85b5-9ce9256f2e1a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 59.4262 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3778,7 +3820,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0e58d70c-6c36-43b2-98ea-0410f0da8f7f")
 		(property "Reference" "R8"
@@ -3984,7 +4026,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "4264b90d-38b9-4832-b44d-822df306c24f")
 		(property "Reference" "Q2"
@@ -4670,7 +4712,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "83ce4bbf-7095-4fa1-8631-98a5b6639e77")
 		(property "Reference" "#PWR06"
 			(at 107.95 30.48 0)
@@ -4682,7 +4723,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 107.95 29.21 0)
+			(at 105.156 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5298,7 +5339,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "138aeb46-3ad3-4643-b6ac-31b7115f9cab")
+			(uuid "138aeb46-3ad3-4643-b6ac-31b7115f9cac")
 		)
 		(instances
 			(project ""

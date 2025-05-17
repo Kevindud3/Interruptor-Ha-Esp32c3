@@ -1,3 +1,4 @@
+
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -15,6 +16,12 @@ mqtt:
       unique_id: lampada
       state_topic: "interruptor/switch"
       command_topic: "interruptor/switch"
+      payload_on: "1"
+      payload_off: "0"
+    - name: "Climatização"
+      unique_id: cont_climat
+      state_topic: "climatização/rele"
+      command_topic: "climatização/rele"
       payload_on: "1"
       payload_off: "0"
   sensor:
@@ -37,6 +44,12 @@ mqtt:
     - name: "Presença Detectada"
       unique_id: sensor_mov_pre
       state_topic: "interruptor/radar"
+    - name: "Temperatura"
+      unique_id: sensor_temp
+      state_topic: "sensor/temp"
+    - name: "Humidade"
+      unique_id: sensor_humi
+      state_topic: "sensor/humi"
   number:
     - name: "Brilho"
       unique_id: mqtt_slider_Brilho
