@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+
+\PYG{n+nt}{mqtt}\PYG{p}{:}
+\PYG{+w}{  }\PYG{n+nt}{sensor}\PYG{p}{:}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Lux}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}lux}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/lux}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{device\PYGZus{}class}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{illuminance}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença}\PYG{n+nv}{ }\PYG{l+s}{Estacionária}\PYG{n+nv}{ }\PYG{l+s}{Distância}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}est\PYGZus{}dis}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/estacionario/distancia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença}\PYG{n+nv}{ }\PYG{l+s}{Estacionária}\PYG{n+nv}{ }\PYG{l+s}{Energia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}est\PYGZus{}ene}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/estacionario/energia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença}\PYG{n+nv}{ }\PYG{l+s}{Em}\PYG{n+nv}{ }\PYG{l+s}{Movimento}\PYG{n+nv}{ }\PYG{l+s}{Distância}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}mov\PYGZus{}dis}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/movendo/distancia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença}\PYG{n+nv}{ }\PYG{l+s}{Em}\PYG{n+nv}{ }\PYG{l+s}{Movimento}\PYG{n+nv}{ }\PYG{l+s}{Energia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}mov\PYGZus{}ene}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/movendo/energia}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença}\PYG{n+nv}{ }\PYG{l+s}{Detectada}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{      }\PYG{n+nt}{unique\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor\PYGZus{}mov\PYGZus{}pre}
+\PYG{+w}{      }\PYG{n+nt}{state\PYGZus{}topic}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar}\PYG{l+s}{\PYGZdq{}}
+\end{MintedVerbatim}

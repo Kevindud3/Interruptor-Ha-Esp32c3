@@ -1,4 +1,4 @@
-- id: '1743357707824'
+id: '1743357707824'
   alias: Detector de Presença (Ligar)
   description: Liga a lampada se presença detectada
   triggers:
@@ -63,32 +63,6 @@
     data: {}
     target:
       entity_id: switch.lampada_2
-  - action: mqtt.publish
-    metadata: {}
-    data:
-      evaluate_payload: false
-      qos: '0'
-      topic: interruptor/sleep
-      payload: '1'
-  mode: single
-- id: '1745710717016'
-  alias: Dormir
-  description: Se dormir
-  triggers:
-  - entity_id:
-    - sensor.presenca_detectada
-    to: Dormindo
-    trigger: state
-    from: Presença Não Detectada
-  conditions: []
-  actions:
-  - action: mqtt.publish
-    metadata: {}
-    data:
-      evaluate_payload: false
-      qos: '0'
-      topic: interruptor/sleep
-      payload: '0'
   mode: single
 - id: '1747447570318'
   alias: Climatização
