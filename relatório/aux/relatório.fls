@@ -116,21 +116,37 @@ INPUT /usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/calc.sty
+INPUT /usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT /usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+INPUT /usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT /usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+INPUT /usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
 INPUT /usr/share/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/share/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm
-INPUT /usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics/trig.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics/trig.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-INPUT /usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/share/texmf-dist/tex/latex/circuitikz/circuitikz.sty
 INPUT /usr/share/texmf-dist/tex/latex/circuitikz/circuitikz.sty
 INPUT /usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
@@ -165,14 +181,6 @@ INPUT /usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-INPUT /usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-INPUT /usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
-INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
-INPUT /usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx
 INPUT /usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 INPUT /usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
@@ -312,6 +320,12 @@ INPUT /usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT /usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT /usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT /usr/share/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT /usr/share/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT /usr/share/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecss1000.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecss2074.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecss1200.tfm
@@ -355,16 +369,16 @@ INPUT aux/_minted/3B5493736AC6474EB292DDB4607F7DE6.highlight.minted
 INPUT ./aux/_minted/D79D7B1F834EA333DBF7BA4DDD50ADAB.highlight.minted
 INPUT ./aux/_minted/D79D7B1F834EA333DBF7BA4DDD50ADAB.highlight.minted
 INPUT aux/_minted/D79D7B1F834EA333DBF7BA4DDD50ADAB.highlight.minted
-INPUT ./aux/_minted/3CFB867438A37FF77DB644D9FF4B81D3.highlight.minted
-INPUT ./aux/_minted/3CFB867438A37FF77DB644D9FF4B81D3.highlight.minted
-INPUT aux/_minted/3CFB867438A37FF77DB644D9FF4B81D3.highlight.minted
+INPUT ./aux/_minted/8F2827A3996EA2061D2CAF2FB33AE6CF.highlight.minted
+INPUT ./aux/_minted/8F2827A3996EA2061D2CAF2FB33AE6CF.highlight.minted
+INPUT aux/_minted/8F2827A3996EA2061D2CAF2FB33AE6CF.highlight.minted
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecit1000.tfm
 INPUT ./aux/_minted/1440543FDA6B9372A3A1B0C695C233B8.highlight.minted
 INPUT ./aux/_minted/1440543FDA6B9372A3A1B0C695C233B8.highlight.minted
 INPUT aux/_minted/1440543FDA6B9372A3A1B0C695C233B8.highlight.minted
-INPUT ./aux/_minted/F0BDE198E7A0BA0C18168AABD540C96B.highlight.minted
-INPUT ./aux/_minted/F0BDE198E7A0BA0C18168AABD540C96B.highlight.minted
-INPUT aux/_minted/F0BDE198E7A0BA0C18168AABD540C96B.highlight.minted
+INPUT ./aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
+INPUT ./aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
+INPUT aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
 INPUT ./aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
 INPUT ./aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
 INPUT aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
@@ -376,9 +390,9 @@ INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./aux/_minted/1D570C58EBF768268DE9DBB94C8B7E3B.highlight.minted
 INPUT ./aux/_minted/1D570C58EBF768268DE9DBB94C8B7E3B.highlight.minted
 INPUT aux/_minted/1D570C58EBF768268DE9DBB94C8B7E3B.highlight.minted
-INPUT ./aux/_minted/9FEA570C7FE8D458B3E63C6B8B05E31B.highlight.minted
-INPUT ./aux/_minted/9FEA570C7FE8D458B3E63C6B8B05E31B.highlight.minted
-INPUT aux/_minted/9FEA570C7FE8D458B3E63C6B8B05E31B.highlight.minted
+INPUT ./aux/_minted/7D63DF6044F85E8E9CE407B8E1C36534.highlight.minted
+INPUT ./aux/_minted/7D63DF6044F85E8E9CE407B8E1C36534.highlight.minted
+INPUT aux/_minted/7D63DF6044F85E8E9CE407B8E1C36534.highlight.minted
 INPUT ./aux/_minted/38D5CC92409A2FCEAC86F935F519E442.highlight.minted
 INPUT ./aux/_minted/38D5CC92409A2FCEAC86F935F519E442.highlight.minted
 INPUT aux/_minted/38D5CC92409A2FCEAC86F935F519E442.highlight.minted
@@ -391,6 +405,20 @@ INPUT aux/_minted/F963E2807EB876D961F52AA63D4BF603.highlight.minted
 INPUT ./aux/_minted/F9C82232EB34169542F497EB5071A1C7.highlight.minted
 INPUT ./aux/_minted/F9C82232EB34169542F497EB5071A1C7.highlight.minted
 INPUT aux/_minted/F9C82232EB34169542F497EB5071A1C7.highlight.minted
+INPUT ./aux/_minted/BABB090A6EDBBE34AA803C0EDB701364.highlight.minted
+INPUT ./aux/_minted/BABB090A6EDBBE34AA803C0EDB701364.highlight.minted
+INPUT aux/_minted/BABB090A6EDBBE34AA803C0EDB701364.highlight.minted
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
 INPUT aux/relatório.aux
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb

@@ -3,28 +3,22 @@
 \PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define RADAR\PYGZus{}SERIAL Serial1}
 \PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define RADAR\PYGZus{}RX\PYGZus{}PIN 20}
 \PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define RADAR\PYGZus{}TX\PYGZus{}PIN 21}
-
 \PYG{n}{ld2410}\PYG{+w}{ }\PYG{n}{radar}\PYG{p}{;}
 \PYG{k+kt}{uint32\PYGZus{}t}\PYG{+w}{ }\PYG{n}{lastReading}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
 \PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{presenceState}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{;}
-
 \PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{initRadar}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{  }\PYG{n}{RADAR\PYGZus{}SERIAL}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(}\PYG{l+m+mi}{256000}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SERIAL\PYGZus{}8N1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RADAR\PYGZus{}RX\PYGZus{}PIN}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{RADAR\PYGZus{}TX\PYGZus{}PIN}\PYG{p}{)}\PYG{p}{;}
-
 \PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{radar}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(}\PYG{n}{RADAR\PYGZus{}SERIAL}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{n}{MONITOR\PYGZus{}SERIAL}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{n}{F}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{OK}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{  }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{n}{MONITOR\PYGZus{}SERIAL}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{n}{F}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{NÃO CONECTADO}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{  }\PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
-
 \PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{readAndPublishRadar}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{millis}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{lastReading}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{n}{lastReading}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{millis}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{    }\PYG{n}{radar}\PYG{p}{.}\PYG{n}{read}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-
 \PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{presenceDetected}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{radar}\PYG{p}{.}\PYG{n}{presenceDetected}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-
 \PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{presenceDetected}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{o}{!}\PYG{n}{presenceState}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{      }\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença Detectada}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{      }\PYG{n}{presenceState}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{;}
@@ -33,7 +27,6 @@
 \PYG{+w}{      }\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Presença Não Detectada}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{      }\PYG{n}{presenceState}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{;}
 \PYG{+w}{    }\PYG{p}{\PYGZcb{}}
-
 \PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{presenceDetected}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{      }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{radar}\PYG{p}{.}\PYG{n}{stationaryTargetDetected}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{        }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{distStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{energyStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{;}
@@ -42,7 +35,6 @@
 \PYG{+w}{        }\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/estacionario/distancia}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{distStr}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{        }\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{interruptor/radar/estacionario/energia}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{energyStr}\PYG{p}{)}\PYG{p}{;}
 \PYG{+w}{      }\PYG{p}{\PYGZcb{}}
-
 \PYG{+w}{      }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{radar}\PYG{p}{.}\PYG{n}{movingTargetDetected}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{        }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{distStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{energyStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{;}
 \PYG{+w}{        }\PYG{n}{itoa}\PYG{p}{(}\PYG{n}{radar}\PYG{p}{.}\PYG{n}{movingTargetDistance}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{distStr}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}

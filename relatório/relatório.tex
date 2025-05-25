@@ -2,17 +2,17 @@
 % Created: 21-05-2025
 
 \documentclass[]{abntex2}
+\usepackage{pdfpages}
 \usepackage[T1]{fontenc}
 \usepackage[]{graphicx}
 \usepackage[]{circuitikz}
 \usepackage[]{hyperref}
 \usepackage[]{amsmath}
-\usepackage[portuguese]{babel}
 \usepackage{booktabs}
 \newtheorem{exemplo}{Exemplo}
 \newcommand{\diff}{\ensuremath{\operatorname{d}\!}}
-\usepackage[portuguese]{babel}
 \usepackage{minted}
+\usepackage[portuguese]{babel}
 
 \begin{document}
 
@@ -139,17 +139,21 @@ respectivos sensores.
 
 \subsection{Sensor BH1750}
 
-O código para leitura do sensor de luminosidade BH1750 foi baseado no exemplo
-oficial dabibliotecado sensor.
+O código para leitura do sensor de luminosidade BH1750 com base no exemplo
+oficial da biblioteca do sensor.
 \footnote{\url{https://github.com/claws/BH1750/blob/master/examples/BH1750test/BH1750test.ino}}
 
-Define-se um tópico MQTT para envio dos dados e uma variável para controle do
-intervalo de leitura. A comunicação I2C é inicializada com
+
+Foi definido um tópico MQTT específico para o envio dos dados de luminosidade,
+além de uma variável que controla o intervalo de leitura. A comunicação I2C é
+inicializada com
 \texttt{Wire.begin()}, e o sensor é configurado com
-\texttt{lightMeter.begin()}. A cada intervalo, a função
-\texttt{lightMeter.readLightLevel()} obtém o valor em lux, que é convertido de
-\texttt{float} para \texttt{string} com \texttt{dtostrf()} e publicado via
-\texttt{client.publish()} no tópico MQTT correspondente.
+\texttt{lightMeter.begin()}.
+Em cada intervalo de leitura, o valor de luminosidade em lux é obtido através
+da função \texttt{lightMeter.readLightLevel()}. Este valor, do tipo
+\texttt{float}, é convertido em \texttt{string} utilizando a função
+\texttt{dtostrf()}, e então publicado no tópico MQTT correspondente por meio de
+\texttt{client.publish()}.
 \clearpage
 \begin{minted}{cpp}
 BH1750 lightMeter;
@@ -184,38 +188,32 @@ radar, além da porta serial secundária (\texttt{Serial1}). A função
 verifica se a conexão foi bem-sucedida. A função \texttt{readAndPublishRadar()}
 é executada periodicamente e realiza a leitura dos dados do sensor. Quando é
 detectada uma mudança no estado de presença (presença detectada ou não
-detectada), essa informação é publicada em um tópico MQTT específico. Caso haja
-presença, também são coletadas e publicadas as informações de distância e
-energia dos alvos, tanto estacionários quanto em movimento, nos respectivos
-tópicos.
+detectada), essa informação é publicada em um tópico MQTT específico. Quando a
+presença é detectada, além do estado, também são coletadas e publicadas as
+informações de distância e intensidade (energia) dos alvos, tanto estáticos
+quanto em movimento, em seus respectivos tópicos MQTT.
 \clearpage
 \begin{minted}{cpp}
 #define MONITOR_SERIAL Serial
 #define RADAR_SERIAL Serial1
 #define RADAR_RX_PIN 20
 #define RADAR_TX_PIN 21
-
 ld2410 radar;
 uint32_t lastReading = 0;
 bool presenceState = false;
-
 void initRadar() {
   RADAR_SERIAL.begin(256000, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
-
   if (radar.begin(RADAR_SERIAL)) {
     MONITOR_SERIAL.println(F("OK"));
   } else {
     MONITOR_SERIAL.println(F("NÃO CONECTADO"));
   }
 }
-
 void readAndPublishRadar() {
   if (millis() - lastReading > 1000) {
     lastReading = millis();
     radar.read();
-
     bool presenceDetected = radar.presenceDetected();
-
     if (presenceDetected && !presenceState) {
       client.publish("interruptor/radar", "Presença Detectada");
       presenceState = true;
@@ -224,7 +222,6 @@ void readAndPublishRadar() {
       client.publish("interruptor/radar", "Presença Não Detectada");
       presenceState = false;
     }
-
     if (presenceDetected) {
       if (radar.stationaryTargetDetected()) {
         char distStr[8], energyStr[8];
@@ -233,7 +230,6 @@ void readAndPublishRadar() {
         client.publish("interruptor/radar/estacionario/distancia", distStr);
         client.publish("interruptor/radar/estacionario/energia", energyStr);
       }
-
       if (radar.movingTargetDetected()) {
         char distStr[8], energyStr[8];
         itoa(radar.movingTargetDistance(), distStr, 10);
@@ -247,9 +243,10 @@ void readAndPublishRadar() {
 \end{minted}
 
 \section{Juntando todas as funções}
-Com a estrutura modular do código pronta e todas as funções definidas nos
-cabeçalhos dos arquivos c++ foi feito o código que faz a chamada de todas as
-funções usando o Arduino IDE.
+Com a estrutura modular do código finalizada e todas as funções devidamente
+declaradas nos arquivos de cabeçalho (\texttt{.h}) e implementadas nos arquivos
+fonte (\texttt{.cpp}) foi desenvolvido o código principal, responsável por
+realizar a chamada das funções, utilizando o ambiente Arduino IDE.
 \begin{minted}{cpp}
 #include "wifi_manager.h"
 #include "mqtt_manager.h"
@@ -272,20 +269,19 @@ void loop() {
 \end{minted}
 
 \section{Recebendo os dados no HA}
- Com o \textit{addon} mosquito MQTT instalado no HA, serão adicionadas entidades
- no HA editando o arquivo \texttt{configuration.yaml} as entidades de sensores
- são definidas de acordo com a documentação oficial do HA.
- \footnote{\url{https://www.home-assistant.io/integrations/sensor.mqtt/}}
+Com o \textit{addon} Mosquitto MQTT instalado no Home Assistant (HA), as
+entidades são adicionadas por meio da edição do arquivo
+\texttt{configuration.yaml}, onde os sensores são configurados conforme a
+documentação oficial do Home Assistant.
 
- \subsection{Definindo os sensores em yaml.}
- Sensores MQTT são definidos em uma tabela yaml que recebe um nome amigável para
- o sensor, um identificador para a entidade do HA e o tópico onde o estado do
- sensor será publicado.
+ \subsection{Definindo os sensores em YAML.}
+Sensores MQTT são definidos em uma estrutura YAML, na qual se atribuem um nome
+amigável, um identificador único para a entidade no HA e o tópico MQTT que
+fornece os dados do sensor.
 
- Será declarado um sensor para cada tópico MQTT definido anteriormente no ESP.
+Declara-se um sensor para cada tópico MQTT previamente configurado no ESP.
 
- \begin{minted}{yaml}
-
+\begin{minted}{yaml}
 mqtt:
   sensor:
     - name: "Lux"
@@ -309,18 +305,21 @@ mqtt:
       state_topic: "interruptor/radar"
 \end{minted}
 
-Com os dados armazenados nas entidades elas pode ser usadas de diversas formas
-no HA, para os nossos propósitos vamos focar em automações no HA.
+Com os dados armazenados nas entidades, eles podem ser utilizados de diversas
+formas no (HA). Para os propósitos deste projeto, o foco será na
+criação de automações.
 
 \section{Automações}
-Automações no HA podem ser definidas no arquivo \texttt{automations.yaml}
-ou pelo editor de blocos visual do HA.
+As automações no HA podem ser definidas diretamente no arquivo
+\texttt{automations.yaml} ou utilizando o editor de blocos visual disponível na
+interface do HA.
 
-\subsection{\textit{Swith} para a lâmpada}
+\subsection{\textit{Switch} para a lâmpada}
 
-Foi criada uma automação com o objetivo de ligar e desligar a lampada com
-base no sensor de presença, para isso é necessário configurar um \textit{switch} MQTT
-que é declarado no arquivo \texttt{configuration.yaml} da seguinte forma
+Foi criada uma automação com o objetivo de ligar e desligar a lâmpada com base
+no estado do sensor de presença. Para isso, é necessário configurar um
+\textit{switch} MQTT, declarado no arquivo \texttt{configuration.yaml}, da
+seguinte forma:
 \clearpage
 \begin{minted}{yaml}
 mqtt:
@@ -332,13 +331,17 @@ mqtt:
       payload_on: "1"
       payload_off: "0"
 \end{minted}
-Com isso foi criada uma entidade \textit{swith} que posta (1) no tópico
-\texttt{interruptor/switch} quando o \textit{switch} é ligado e (0) quando
-desligado. Devido a natureza do MQTT caso esse estado seja alterado por outro
-dispositivo ou de outra forma no HA a entidade também será atualizado de
-acordo. Com a entidade definida foram criadas duas automações uma para ligar o
-\textit{switch} caso presença seja detectada e desligar o \textit{switch} após
-uma quantidade arbitraria de tempo sem presença detectada.
+Com essa configuração, é criada uma entidade do tipo \textit{switch} que
+publica o valor \texttt{"1"} no tópico \texttt{interruptor/switch} quando está
+ligada, e \texttt{"0"} quando está desligada.
+
+Devido à natureza do MQTT, caso o estado seja alterado por outro dispositivo ou
+por outro processo dentro do HA, a entidade será atualizada automaticamente
+para refletir essa mudança.
+
+Com a entidade devidamente configurada, foram criadas duas automações: uma para
+ligar o \textit{switch} quando for detectada presença, e outra para desligá-lo
+após um tempo arbitrário sem detecção de presença.
 
 \begin{minted}{yaml}
 id: '1743357707824'
@@ -382,7 +385,8 @@ id: '1743357707824'
 \end{minted}
 \clearpage
 
-Inscrevendo o ESP nesse tópico torna-se possível acessar essa condição.
+Ao inscrever o ESP neste tópico, torna-se possível monitorar e reagir às
+mudanças de estado publicadas.
 
 Na função \texttt{setupMQTT()}
 
@@ -392,18 +396,22 @@ client.subscribe("interruptor/switch");
 }
 \end{minted}
 
-Para controlar a lâmpada por meio de um relé, pode-se utilizar uma estrutura
-condicional \texttt{if}, inserida na função \texttt{callback()}. Nessa função, a
-comparação entre a \texttt{string} da variável \texttt{topic} e o tópico
-previamente definido no HA é realizada por meio da
-função \texttt{strcmp()}. Em seguida, o valor da mensagem contido na variável
-\texttt{message} é verificado e, com base nele, a função \texttt{digitalWrite()}
-é utilizada para alterar o estado lógico do pino conectado ao relé.
+Para controlar a lâmpada por meio de um relé, é utilizada uma estrutura
+condicional \texttt{if} dentro da função \texttt{callback()}.
+Nessa função, a comparação entre a variável \texttt{topic} e o tópico definido
+no HA é feita utilizando a função \texttt{strcmp()}.
+O valor da mensagem (\texttt{message}) é então verificado, e, com base nesse
+valor, a função \texttt{digitalWrite()} altera o estado lógico do pino
+conectado ao relé.
 
 Na função \texttt{callback()}
 \begin{minted}{cpp}
 const int pinoRELE = 0;
 void callback(char* topic, byte* payload, unsigned int length) {
+	String message = "";
+	for (unsigned int i = 0; i < length; i++) {
+		message += (char)payload[i];
+	}
 	if (strcmp(topic, "interruptor/switch") == 0) {
 		if (message == "1") {
 			digitalWrite(pinoRELE, HIGH);
@@ -414,11 +422,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 \end{minted}
 \subsection{Controle de brilho da lâmpada}
-Em seguida usando os valores lidos e publicados no tópico do sensor lux
-para automatizar o controle do brilho da lâmpada.
+Utilizando os valores lidos e publicados no tópico do sensor de luminosidade, é
+possível automatizar o controle do brilho da lâmpada.
 
-Adicionada uma entidade \texttt{number} no arquivo \texttt{configuration.yaml} que também é postada em seu
-respectivo tópico.
+Foi adicionada uma entidade do tipo \texttt{number} no arquivo
+\texttt{configuration.yaml}, responsável por publicar e receber dados no tópico
+específico.
 \begin{minted}{yaml}
 mqtt:
   number:
@@ -432,20 +441,20 @@ mqtt:
       retain: false
       unit_of_measurement: "%"
 \end{minted}
-E criando uma automação usando a formula sugerida nos forums do HA
+Foi criada uma automação usando a fórmula sugerida nos fórums do HA
 \footnote{\url{https://community.home-assistant.io/t/dim-lights-as-lumens-increases/182065/15}}
 e usando como base o \texttt{blueprint} \footnote{\url{https://community.home-assistant.io/t/smart-lux-dimmer-adjust-light-brightness-depending-on-light-sensor-value/403646}}
 \[
-	Brilo = (Declive \times  lux) + constante
+	Brilho = (Declive \times  lux) + constante
 \]
-No arquivo \texttt{automations.yaml} onde teremos as variáveis \texttt{maxB}
-Que seria o valor de lux onde o brilho é configurado em 0 como definido na variável \texttt{light\_value\_1},
-\texttt{minB} o valor de lux onde o brilho é configurado em 100 como definido na variável \texttt{ligh\_value\_2}.
-O declive é calculado com a formula:
-\[
-slope= \frac{ligh1 - light2}{maxB - minB}
+No arquivo \texttt{automations.yaml} Onde são definidas as variáveis
+\texttt{maxB}, que representa o valor de lux no qual o brilho é configurado em
+0 (correspondente à variável \texttt{light\_value\_1}), e \texttt{minB}, que é o
+valor de lux onde o brilho atinge 100\% (definido pela variável
+\texttt{light\_value\_2}).\[
+slope= \frac{light1 - light2}{maxB - minB}
 \]
-e a constante com a formula:
+e a constante pela formula:
 \[
 constant = light1 - (slope \times maxB)
 \]
@@ -482,7 +491,8 @@ constant = light1 - (slope \times maxB)
   mode: single
 \end{minted}
 
-Novamente o ESP é inscrito nesse tópico.
+O ESP também é inscrito neste tópico para receber os comandos de controle de
+brilho.
 
 Na função \texttt{setupMQTT()}
 \begin{minted}{cpp}
@@ -491,14 +501,16 @@ void setupMQTT() {
 }
 \end{minted}
 
-Na função \texttt{callback()}, são definidas variáveis para o sinal PWM,
-incluindo frequência, resolução e o pino correspondente. A função
-\texttt{ledcAttach()} do ESP é utilizada para configurar o canal PWM com esses
-parâmetros. O valor recebido é restringido entre 0 e 100 e, em seguida,
-convertido proporcionalmente para o intervalo de 0 a 255, que representa o
-\textit{Duty Cycle} do PWM do ESP. Por fim, a função \texttt{ledcWrite()}
-ajusta o pino com o \textit{Duty Cycle} calculado, baseado no valor do brilho
-recebido no tópico \texttt{lampada/brilho}.
+Na função \texttt{setupPWM()}, são definidas as configurações do sinal PWM,
+incluindo frequência, resolução e o pino utilizado.
+A função \texttt{ledcAttach()} do ESP é utilizada para vincular o pino
+ao canal PWM com os parâmetros definidos.
+Na funcão \texttt{callback}, o valor recebido é limitado ao intervalo de 0 a 100 e, em seguida, convertido
+proporcionalmente para o intervalo de 0 a 255, que representa o \textit{Duty
+Cycle} do sinal PWM no ESP.
+Por fim, a função \texttt{ledcWrite()} ajusta o sinal PWM no pino, aplicando o
+\textit{Duty Cycle} correspondente ao valor de brilho recebido no tópico
+\texttt{lampada/brilho}.
 
 \begin{minted}{cpp}
 const int pwmFreq = 20000;  // Frequência de 20kHz
@@ -515,15 +527,66 @@ void callback(char* topic, byte* payload, unsigned int length) {
 	}
 }
 \end{minted}
+Também é adicionada a função \texttt{setupPWM} dentro da função
+\texttt{setup()} do arquivo principal.
+\begin{minted}{cpp}
+void setup(){
+setupPWM();
+}
+\end{minted}
+
+
 
 \section{Modificando uma lâmpada}
-Lâmpadas de LED comum não podem ter seu brilho ajustado dinamicamente como
-lampadas de outras tecnologias podiam.
+Lâmpadas de LED convencionais não permitem ajuste de brilho dinâmico da mesma
+forma que lâmpadas de tecnologias anteriores.
 
-Para modificar o brilho de lampadas modernas de LED, que usam um simples circuito integrado para controlar a potência da lâmpada foi usado o principio
-exemplificado nesse vídeo \footnote{\url{https://www.youtube.com/watch?v=5HTa2jVi_rc}}, mas ao
-invéz de modificar o valor dos resistores, o que reduziria a potência da lâmpada
-o brilho pode ser controlado dinamicamente usando um transistor que recebe o sinal PWM
-do ESP.
+Para possibilitar o ajuste de brilho em lâmpadas de LED modernas, que utilizam
+circuitos integrados simples para controle de potência, adotou-se o princípio
+demonstrado neste vídeo
+\footnote{\url{https://www.youtube.com/watch?v=5HTa2jVi_rc}}, mas ao
+Entretanto, em vez de alterar os resistores para reduzir a potência
+da lâmpada, optou-se por utilizar um transistor que recebe o sinal PWM do ESP,
+configurado anteriormente no lugar de um dos resistores, permitindo o
+controle dinâmico do brilho.
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}[american]
+	\draw (0,0) node{RS1} to [R=$ 5 \Omega $] (0,2) -- (1, 2)
+to [R=$ 501K \Omega $] (1,4)  to [led] (1,6) -- (1, 7) -- (4, 7) -- (4, 0) node[ground]{}
+\draw (1,2) -- (2, 2) to [R=$ 10 \Omega $] (2,0) node{RS2}
+;
+\end{circuitikz}
+\caption{Circuito original}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz}[american]
+    \draw (0,0) node[]{RS1} to[short] (0,0.5);
+    \draw (0,0.5) node[npn, anchor=E, xscale=1] (Q1) {};
+    \node at (-0.3,1.1) {};
+
+    \draw (Q1.C) -- (0,2) to[R=$5\,\Omega$] (0,4);
+
+    \draw (0,4) -- (1,4)
+    to[R=$501\,k\Omega$] (1,6)
+    to[led] (1,8) -- (1,9) -- (4,9) -- (4,0) node[ground]{};
+
+    \draw (1,4) -- (2,4) to[R=$10\,\Omega$] (2,0) node[]{RS2};
+
+    \draw (Q1.B) -- ++(-1,0) to[R=$75\Omega$] ++(0,2) node[]{PWM};
+\end{circuitikz}
+\caption{Circuito modificado}
+\end{figure}
+\clearpage
+Dessa forma, concluem-se todos os objetivos desta etapa do projeto: a lâmpada
+pode ser ligada e desligada via relé controlado pelo Home Assistant, e seu
+brilho pode ser ajustado dinamicamente através de um sinal PWM, também
+controlado pelo Home Assistant. Foi então feita a montagem do projeto, seguindo
+a esquemática.
+
+\includepdf{\detokenize{~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf}}
 
 \end{document}
