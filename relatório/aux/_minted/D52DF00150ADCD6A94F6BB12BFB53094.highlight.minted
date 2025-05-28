@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Adafruit\PYGZus{}AHT10}\PYG{+w}{ }\PYG{n}{aht}\PYG{p}{;}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{init\PYGZus{}Temp}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{+w}{ }\PYG{n}{aht}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Could not find AHT10? Check wiring}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{delay}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{AHT10 found}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{readAndPublishTemp}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{n}{sensors\PYGZus{}event\PYGZus{}t}\PYG{+w}{ }\PYG{n}{humidity}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{temp}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{aht}\PYG{p}{.}\PYG{n}{getEvent}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{humidity}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{temp}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k+kt}{char}\PYG{+w}{ }\PYG{n}{tempStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{humiStr}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{dtostrf}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{temperature}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tempStr}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{dtostrf}\PYG{p}{(}\PYG{n}{humidity}\PYG{p}{.}\PYG{n}{relative\PYGZus{}humidity}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{humiStr}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{sensor/humi}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{humiStr}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{client}\PYG{p}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{sensor/temp}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tempStr}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n}{delay}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

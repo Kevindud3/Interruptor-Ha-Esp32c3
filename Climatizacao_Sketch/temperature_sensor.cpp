@@ -14,7 +14,7 @@ void init_Temp() {
 
 void readAndPublishTemp() {
 	sensors_event_t humidity, temp;
-	aht.getEvent(&humidity, &temp);// populate temp and humidity objects with fresh data
+	aht.getEvent(&humidity, &temp);
 	char tempStr[8], humiStr[8];
     dtostrf(temp.temperature, 1, 2, tempStr);
     dtostrf(humidity.relative_humidity, 1, 2, humiStr);

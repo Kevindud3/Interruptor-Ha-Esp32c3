@@ -21,7 +21,7 @@
 Este projeto tem como objetivo o desenvolvimento de uma lâmpada inteligente com
 controle de intensidade luminosa (\textit{dimmer}) e acionamento automático
 baseado em sensores de luminosidade e presença. Para isso, foram utilizados um
-microcontrolador, o sensor de luminosidade BH1750 e o sensor de presença por
+microcontrolador ESP32C3 Super Mini, o sensor de luminosidade BH1750 e o sensor de presença por
 radar LD2410C, além da integração com o sistema de automação residencial Home
 Assistant OS (HAOS) via protocolo MQTT.
 
@@ -37,7 +37,7 @@ biblioteca Arduino
 WiFi.\footnote{\url{https://github.com/arduino-libraries/WiFi/blob/master/examples/ConnectWithWPA/ConnectWithWPA.ino}}
 
 O SSID e a senha da rede são armazenados em variáveis, e a função
-\texttt{WiFi.begin()} é utilizada para iniciar a conexão.
+\textit{WiFi.begin()} é utilizada para iniciar a conexão.
 
 O status da conexão é exibido no monitor serial, permitindo a verificação do
 sucesso da conexão e facilitando a depuração.
@@ -65,15 +65,15 @@ oficial da biblioteca
 PubSubClient.\footnote{\url{https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_basic/mqtt_basic.ino}}
 
 O endereço IPv4 do HAOS, bem como o nome de usuário e a senha de um usuário
-secundário, são armazenados em variáveis. A função \texttt{client.setServer()}
+secundário, são armazenados em variáveis. A função \textit{client.setServer()}
 é utilizada para definir o endereço IP e a porta do broker MQTT. A seguir, a
-função \texttt{client.setCallback()} registra o método que será executado
+função \textit{client.setCallback()} registra o método que será executado
 sempre que uma mensagem for recebida. A conexão é então estabelecida por meio
-da função \texttt{client.connect()}, que recebe como parâmetros o identificador
+da função \textit{client.connect()}, que recebe como parâmetros o identificador
 do cliente (no caso, o ESP) e as credenciais. O status da conexão é exibido no
 monitor serial, auxiliando na depuração e no monitoramento da comunicação
 MQTT.Após a conexão bem-sucedida, o ESP se inscreve nos tópicos de interesse
-utilizando a função \texttt{client.subscribe()}.
+utilizando a função \textit{client.subscribe()}.
 
 \begin{minted}{cpp}
 const char* mqtt_server = "192.168.88.253";
@@ -107,11 +107,11 @@ void mqttLoop() {
 \clearpage
 \subsection{\textit{Callback} MQTT}
 
-A função \texttt{callback}, mencionada anteriormente, tem a função de processar
+A função \textit{callback}, mencionada anteriormente, tem a função de processar
 as mensagens recebidas nos tópicos em que o ESP está inscrito.
 
 O conteúdo da mensagem, inicialmente recebido como um vetor de bytes, é
-convertido para uma string, armazenado na variável \texttt{message} e, em
+convertido para uma string, armazenado na variável \textit{message} e, em
 seguida, exibido no monitor serial.
 
 \begin{minted}{cpp}
@@ -131,15 +131,15 @@ void callback(char* topic, byte* payload, unsigned int length){
 A comunicação MQTT foi testada pelo menu do add-on Mosquitto MQTT, publicando
 mensagens nos tópicos e verificando a recepção no monitor serial.
 
-\section{Teste dos Sensores}
+\subsection{Teste dos Sensores}
 Com a conexão Wi-Fi e o protocolo de comunicação MQTT funcionando corretamente,
 prosseguiu-se com a implementação da leitura dos sensores no microcontrolador,
 utilizando como base os exemplos disponibilizados nas bibliotecas dos
 respectivos sensores.
 
-\subsection{Sensor BH1750}
+\subsubsection{Sensor BH1750}
 
-O código para leitura do sensor de luminosidade BH1750 com base no exemplo
+O código para leitura do sensor de luminosidade BH1750 foi desenvolvido com base no exemplo
 oficial da biblioteca do sensor.
 \footnote{\url{https://github.com/claws/BH1750/blob/master/examples/BH1750test/BH1750test.ino}}
 
@@ -147,13 +147,13 @@ oficial da biblioteca do sensor.
 Foi definido um tópico MQTT específico para o envio dos dados de luminosidade,
 além de uma variável que controla o intervalo de leitura. A comunicação I2C é
 inicializada com
-\texttt{Wire.begin()}, e o sensor é configurado com
-\texttt{lightMeter.begin()}.
+\textit{Wire.begin()}, e o sensor é configurado com
+\textit{lightMeter.begin()}.
 Em cada intervalo de leitura, o valor de luminosidade em lux é obtido através
-da função \texttt{lightMeter.readLightLevel()}. Este valor, do tipo
-\texttt{float}, é convertido em \texttt{string} utilizando a função
-\texttt{dtostrf()}, e então publicado no tópico MQTT correspondente por meio de
-\texttt{client.publish()}.
+da função \textit{lightMeter.readLightLevel()}. Este valor, do tipo
+\textit{float}, é convertido em \texttt{string} utilizando a função
+\textit{dtostrf()}, e então publicado no tópico MQTT correspondente por meio de
+\textit{client.publish()}.
 \clearpage
 \begin{minted}{cpp}
 BH1750 lightMeter;
@@ -176,16 +176,16 @@ void readAndPublishLux() {
 }
 \end{minted}
 
-\subsection{Sensor de Radar LD2410}
+\subsubsection{Sensor de Radar LD2410}
 
 O código para integração do sensor de radar LD2410 foi desenvolvido com base no
 exemplo oficial da biblioteca do sensor.
 \footnote{\url{https://github.com/ncmreynolds/ld2410/blob/main/examples/basicSensor/basicSensor.ino}}
 
 Inicialmente, define-se os pinos RX e TX utilizados na comunicação serial com o
-radar, além da porta serial secundária (\texttt{Serial1}). A função
-\texttt{initRadar()} realiza a inicialização da comunicação serial com o radar e
-verifica se a conexão foi bem-sucedida. A função \texttt{readAndPublishRadar()}
+radar, além da porta serial secundária (\textit{Serial1}). A função
+\textit{initRadar()} realiza a inicialização da comunicação serial com o radar e
+verifica se a conexão foi bem-sucedida. A função \textit{readAndPublishRadar()}
 é executada periodicamente e realiza a leitura dos dados do sensor. Quando é
 detectada uma mudança no estado de presença (presença detectada ou não
 detectada), essa informação é publicada em um tópico MQTT específico. Quando a
@@ -242,10 +242,10 @@ void readAndPublishRadar() {
 }
 \end{minted}
 
-\section{Juntando todas as funções}
+\subsection{Juntando todas as funções}
 Com a estrutura modular do código finalizada e todas as funções devidamente
-declaradas nos arquivos de cabeçalho (\texttt{.h}) e implementadas nos arquivos
-fonte (\texttt{.cpp}) foi desenvolvido o código principal, responsável por
+declaradas nos arquivos de cabeçalho (\textit{.h}) e implementadas nos arquivos
+fonte (\textit{.cpp}) foi desenvolvido o código principal, responsável por
 realizar a chamada das funções, utilizando o ambiente Arduino IDE.
 \begin{minted}{cpp}
 #include "wifi_manager.h"
@@ -268,13 +268,13 @@ void loop() {
 }
 \end{minted}
 
-\section{Recebendo os dados no HA}
+\subsection{Recebendo os dados no HA}
 Com o \textit{addon} Mosquitto MQTT instalado no Home Assistant (HA), as
 entidades são adicionadas por meio da edição do arquivo
-\texttt{configuration.yaml}, onde os sensores são configurados conforme a
+\textit{configuration.yaml}, onde os sensores são configurados conforme a
 documentação oficial do Home Assistant.
 
- \subsection{Definindo os sensores em YAML.}
+ \subsubsection{Definindo os sensores em YAML.}
 Sensores MQTT são definidos em uma estrutura YAML, na qual se atribuem um nome
 amigável, um identificador único para a entidade no HA e o tópico MQTT que
 fornece os dados do sensor.
@@ -309,16 +309,16 @@ Com os dados armazenados nas entidades, eles podem ser utilizados de diversas
 formas no (HA). Para os propósitos deste projeto, o foco será na
 criação de automações.
 
-\section{Automações}
+\subsection{Automações}
 As automações no HA podem ser definidas diretamente no arquivo
-\texttt{automations.yaml} ou utilizando o editor de blocos visual disponível na
+\textit{automations.yaml} ou utilizando o editor de blocos visual disponível na
 interface do HA.
 
-\subsection{\textit{Switch} para a lâmpada}
+\subsubsection{\textit{Switch} para a lâmpada}
 
 Foi criada uma automação com o objetivo de ligar e desligar a lâmpada com base
 no estado do sensor de presença. Para isso, é necessário configurar um
-\textit{switch} MQTT, declarado no arquivo \texttt{configuration.yaml}, da
+\textit{switch} MQTT, declarado no arquivo \textit{configuration.yaml}, da
 seguinte forma:
 \clearpage
 \begin{minted}{yaml}
@@ -332,8 +332,8 @@ mqtt:
       payload_off: "0"
 \end{minted}
 Com essa configuração, é criada uma entidade do tipo \textit{switch} que
-publica o valor \texttt{"1"} no tópico \texttt{interruptor/switch} quando está
-ligada, e \texttt{"0"} quando está desligada.
+publica o valor \textit{"1"} no tópico \texttt{interruptor/switch} quando está
+ligada, e \textit{"0"} quando está desligada.
 
 Devido à natureza do MQTT, caso o estado seja alterado por outro dispositivo ou
 por outro processo dentro do HA, a entidade será atualizada automaticamente
@@ -388,7 +388,7 @@ id: '1743357707824'
 Ao inscrever o ESP neste tópico, torna-se possível monitorar e reagir às
 mudanças de estado publicadas.
 
-Na função \texttt{setupMQTT()}
+Na função \textit{setupMQTT()}
 
 \begin{minted}{cpp}
 void setupMQTT() {
@@ -397,14 +397,14 @@ client.subscribe("interruptor/switch");
 \end{minted}
 
 Para controlar a lâmpada por meio de um relé, é utilizada uma estrutura
-condicional \texttt{if} dentro da função \texttt{callback()}.
-Nessa função, a comparação entre a variável \texttt{topic} e o tópico definido
-no HA é feita utilizando a função \texttt{strcmp()}.
-O valor da mensagem (\texttt{message}) é então verificado, e, com base nesse
-valor, a função \texttt{digitalWrite()} altera o estado lógico do pino
+condicional \textit{if} dentro da função \texttt{callback()}.
+Nessa função, a comparação entre a variável \textit{topic} e o tópico definido
+no HA é feita utilizando a função \textit{strcmp()}.
+O valor da mensagem (\textit{message}) é então verificado, e, com base nesse
+valor, a função \textit{digitalWrite()} altera o estado lógico do pino
 conectado ao relé.
 
-Na função \texttt{callback()}
+Na função \textit{callback()}
 \begin{minted}{cpp}
 const int pinoRELE = 0;
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -421,12 +421,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
 	}
 }
 \end{minted}
-\subsection{Controle de brilho da lâmpada}
+\subsubsection{Controle de brilho da lâmpada}
 Utilizando os valores lidos e publicados no tópico do sensor de luminosidade, é
 possível automatizar o controle do brilho da lâmpada.
 
-Foi adicionada uma entidade do tipo \texttt{number} no arquivo
-\texttt{configuration.yaml}, responsável por publicar e receber dados no tópico
+Foi adicionada uma entidade do tipo \textit{number} no arquivo
+\textit{configuration.yaml}, responsável por publicar e receber dados no tópico
 específico.
 \begin{minted}{yaml}
 mqtt:
@@ -443,15 +443,15 @@ mqtt:
 \end{minted}
 Foi criada uma automação usando a fórmula sugerida nos fórums do HA
 \footnote{\url{https://community.home-assistant.io/t/dim-lights-as-lumens-increases/182065/15}}
-e usando como base o \texttt{blueprint} \footnote{\url{https://community.home-assistant.io/t/smart-lux-dimmer-adjust-light-brightness-depending-on-light-sensor-value/403646}}
+e usando como base o \textit{blueprint} \footnote{\url{https://community.home-assistant.io/t/smart-lux-dimmer-adjust-light-brightness-depending-on-light-sensor-value/403646}}
 \[
 	Brilho = (Declive \times  lux) + constante
 \]
-No arquivo \texttt{automations.yaml} Onde são definidas as variáveis
-\texttt{maxB}, que representa o valor de lux no qual o brilho é configurado em
-0 (correspondente à variável \texttt{light\_value\_1}), e \texttt{minB}, que é o
+No arquivo \textit{automations.yaml} Onde são definidas as variáveis
+\textit{maxB}, que representa o valor de lux no qual o brilho é configurado em
+0 (correspondente à variável \textit{light\_value\_1}), e \texttt{minB}, que é o
 valor de lux onde o brilho atinge 100\% (definido pela variável
-\texttt{light\_value\_2}).\[
+\textit{light\_value\_2}).\[
 slope= \frac{light1 - light2}{maxB - minB}
 \]
 e a constante pela formula:
@@ -494,23 +494,23 @@ constant = light1 - (slope \times maxB)
 O ESP também é inscrito neste tópico para receber os comandos de controle de
 brilho.
 
-Na função \texttt{setupMQTT()}
+Na função \textit{setupMQTT()}
 \begin{minted}{cpp}
 void setupMQTT() {
 	client.subscribe("lampada/brilho");
 }
 \end{minted}
 
-Na função \texttt{setupPWM()}, são definidas as configurações do sinal PWM,
+Na função \textit{setupPWM()}, são definidas as configurações do sinal PWM,
 incluindo frequência, resolução e o pino utilizado.
-A função \texttt{ledcAttach()} do ESP é utilizada para vincular o pino
+A função \textit{ledcAttach()} do ESP é utilizada para vincular o pino
 ao canal PWM com os parâmetros definidos.
-Na funcão \texttt{callback}, o valor recebido é limitado ao intervalo de 0 a 100 e, em seguida, convertido
+Na funcão \textit{callback}, o valor recebido é limitado ao intervalo de 0 a 100 e, em seguida, convertido
 proporcionalmente para o intervalo de 0 a 255, que representa o \textit{Duty
 Cycle} do sinal PWM no ESP.
-Por fim, a função \texttt{ledcWrite()} ajusta o sinal PWM no pino, aplicando o
+Por fim, a função \textit{ledcWrite()} ajusta o sinal PWM no pino, aplicando o
 \textit{Duty Cycle} correspondente ao valor de brilho recebido no tópico
-\texttt{lampada/brilho}.
+\textit{lampada/brilho}.
 
 \begin{minted}{cpp}
 const int pwmFreq = 20000;  // Frequência de 20kHz
@@ -527,8 +527,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
 	}
 }
 \end{minted}
-Também é adicionada a função \texttt{setupPWM} dentro da função
-\texttt{setup()} do arquivo principal.
+Também é adicionada a função \textit{setupPWM} dentro da função
+\textit{setup()} do arquivo principal.
 \begin{minted}{cpp}
 void setup(){
 setupPWM();
@@ -537,7 +537,7 @@ setupPWM();
 
 
 
-\section{Modificando uma lâmpada}
+\subsection{Modificando uma lâmpada}
 Lâmpadas de LED convencionais não permitem ajuste de brilho dinâmico da mesma
 forma que lâmpadas de tecnologias anteriores.
 
@@ -584,9 +584,196 @@ to [R=$ 501K \Omega $] (1,4)  to [led] (1,6) -- (1, 7) -- (4, 7) -- (4, 0) node[
 Dessa forma, concluem-se todos os objetivos desta etapa do projeto: a lâmpada
 pode ser ligada e desligada via relé controlado pelo Home Assistant, e seu
 brilho pode ser ajustado dinamicamente através de um sinal PWM, também
-controlado pelo Home Assistant. Foi então feita a montagem do projeto, seguindo
-a esquemática.
+controlado pelo Home Assistant. A montagem do projeto foi realizada conforme  a
+esquemática apresentada.
 
 \includepdf{\detokenize{~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf}}
+
+\section{Climatização}
+Este projeto tem como objetivo o desenvolvimento de um sistema de controle para
+climatização, com acionamento automático por meio de um relé, baseado na
+leitura de temperatura e em uma temperatura alvo definida.
+Para a implementação, foram utilizados um microcontrolador ESP32-C3 Super Mini,
+o sensor de temperatura e umidade AHT10, além da comunicação com o Home
+Assistant (HA) através do protocolo MQTT.
+
+Grande parte dos módulos de código desenvolvidos anteriormente foram
+reutilizados, com uma alteração necessária:
+o identificador do cliente MQTT precisa ser diferente do utilizado no outro
+dispositivo, a fim de evitar conflitos na comunicação.
+
+\begin{minted}{cpp}
+
+void setupMQTT() {
+    if (client.connect("ESP32Client2", mqtt_user, mqtt_password)) {
+}
+\end{minted}
+\subsection{Sensor AHT10}
+O código para leitura do sensor de temperatura e umidade AHT10 foi
+desenvolvido com base no exemplo oficial da biblioteca do sensor. \footnote{\url{https://github.com/adafruit/Adafruit_AHTX0/blob/master/examples/adafruit_aht_test/adafruit_aht_test.ino}}
+A função \textit{readAndPublishTemp()} é executada periodicamente
+realizando a leitura dos dados do sensor.
+Estes valores, do tipo float, são convertidos em strings utilizando a
+função \textit{dtostrf()}, e então publicados nos tópicos MQTT correspondentes por meio de \textit{client.publish()}.
+
+\begin{minted}{cpp}
+Adafruit_AHT10 aht;
+
+void init_Temp() {
+
+  if (! aht.begin()) {
+    Serial.println("Could not find AHT10? Check wiring");
+    while (1) delay(10);
+  }
+  Serial.println("AHT10 found");
+}
+
+void readAndPublishTemp() {
+	sensors_event_t humidity, temp;
+	aht.getEvent(&humidity, &temp);
+	char tempStr[8], humiStr[8];
+    dtostrf(temp.temperature, 1, 2, tempStr);
+    dtostrf(humidity.relative_humidity, 1, 2, humiStr);
+	client.publish("sensor/humi", humiStr);
+	client.publish("sensor/temp", tempStr);
+
+  delay(500);
+}
+\end{minted}
+
+\subsection{Juntando as funções}
+Com a estrutura modular do código finalizada e todas as funções devidamente
+declaradas nos arquivos de cabeçalho (.h) e implementadas nos arquivos fonte
+(.cpp) foi desenvolvido o código principal, responsável por realizar a chamada
+das funções, utilizando o ambiente Arduino IDE.
+
+\begin{minted}{cpp}
+#include "wifi_manager.h"
+#include "mqtt_manager.h"
+#include "temperature_sensor.h"
+
+
+void setup() {
+  Serial.begin(115200);
+  connectToWiFi();
+  setupMQTT();
+  init_Temp();
+}
+
+void loop() {
+  mqttLoop();
+  readAndPublishTemp();
+}
+\end{minted}
+
+\subsection{Recebendo os dados no HA}
+\subsubsection{Definido o sensor em YAML}
+\begin{minted}{yaml}
+  sensor:
+    - name: "Temperatura"
+      unique_id: sensor_temp
+      state_topic: "sensor/temp"
+    - name: "humidade"
+      unique_id: sensor_humi
+      state_topic: "sensor/humi"
+\end{minted}
+
+\subsubsection{Automação}
+Para a definição da temperatura alvo foi necessário criar uma entidade do tipo \textit{number}, como não é necessária transmissão MQTT desse valor podemos criar a entidade na GUI do HA.
+\clearpage
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{\detokenize{~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png}}
+\caption{Criação de entidade \textit{number} no HA}
+\end{figure}
+\clearpage
+E também é necessário criar outro \textit{switch} MQTT no arquivo \textit{configuration.yaml} com um tópico MQTT.
+\begin{minted}{yaml}
+mqtt:
+  switch:
+    - name: "Climatização"
+      unique_id: cont_climat
+      state_topic: "climatização/rele"
+      command_topic: "climatização/rele"
+      payload_on: "1"
+      payload_off: "0"
+\end{minted}
+
+
+Agora a automação pode ser criada, de maneira a ligar e desligar o relé para atingir a temperatura alvo
+\begin{minted}{yaml}
+- id: '1747447570318'
+  alias: Climatização
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.temperatura
+    - input_number.temperatura_alvo
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.temperatura
+        above: input_number.temperatura_alvo
+        below: 51
+      sequence:
+      - action: switch.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.climatizacao
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.temperatura
+        below: input_number.temperatura_alvo
+        above: '0'
+      sequence:
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.climatizacao
+  mode: single
+\end{minted}
+
+O ESP é inscrito neste tópico.
+\begin{minted}{cpp}
+void setupMQTT() {
+client.subscribe("climatização/rele");
+}
+\end{minted}
+
+Para controlar o relé, é utilizada uma estrutura
+condicional \textit{if} dentro da função \texttt{callback()}.
+Nessa função, a comparação entre a variável \textit{topic} e o tópico definido
+no HA é feita utilizando a função \textit{strcmp()}.
+O valor da mensagem (\textit{message}) é então verificado, e, com base nesse
+valor, a função \textit{digitalWrite()} altera o estado lógico do pino
+conectado ao relé.
+
+Na função \textit{callback()}
+\begin{minted}{cpp}
+const int pinoRELE = 0;
+void callback(char* topic, byte* payload, unsigned int length) {
+	String message = "";
+	for (unsigned int i = 0; i < length; i++) {
+		message += (char)payload[i];
+	if (strcmp(topic, "climatização/rele") == 0) {
+		if (message == "1") {
+			digitalWrite(pinoRELE, HIGH);
+		} else if (message == "0") {
+			digitalWrite(pinoRELE, LOW);
+		}
+	}
+}
+\end{minted}
+
+Dessa forma, concluem-se todos os objetivos desta etapa do projeto: o relé é
+controlado pelo Home Assistant, com base em uma temperatura alvo definida pelo
+usuário. A montagem do projeto foi realizada conforme  a esquemática apresentada.
+\clearpage
+\includepdf{\detokenize{~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf}}
 
 \end{document}

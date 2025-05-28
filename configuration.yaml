@@ -51,12 +51,8 @@ mqtt:
       unique_id: sensor_humi
       state_topic: "sensor/humi"
   number:
-    - name: "Brilho"
-      unique_id: mqtt_slider_Brilho
-      state_topic: "lampada/brilho"
-      command_topic: "lampada/brilho"
+    - name: "Temperatura Alvo"
+      unique_id: input_number.temperatura_alvo
       min: 0
-      max: 100
+      max: 50
       step: 1
-      retain: false
-      unit_of_measurement: "%"

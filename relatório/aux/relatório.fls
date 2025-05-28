@@ -344,7 +344,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ectt0800.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
 OUTPUT aux/_EE04E552E7F9F73E3181F1690D41522D.data.minted
 INPUT aux/_EE04E552E7F9F73E3181F1690D41522D.config.minted
 INPUT aux/_EE04E552E7F9F73E3181F1690D41522D.config.minted
@@ -357,6 +356,7 @@ INPUT aux/_minted/default.style.minted
 INPUT ./aux/_minted/E458457E142974A2643995294E86E7D0.highlight.minted
 INPUT ./aux/_minted/E458457E142974A2643995294E86E7D0.highlight.minted
 INPUT aux/_minted/E458457E142974A2643995294E86E7D0.highlight.minted
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT ./aux/_minted/DFA764BF9EFF5C53738E064DA7781F06.highlight.minted
@@ -379,6 +379,7 @@ INPUT aux/_minted/1440543FDA6B9372A3A1B0C695C233B8.highlight.minted
 INPUT ./aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
 INPUT ./aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
 INPUT aux/_minted/6EED31CB8FEE14716892D87C295330BA.highlight.minted
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecsi1000.tfm
 INPUT ./aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
 INPUT ./aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
 INPUT aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted
@@ -419,6 +420,46 @@ INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho
 INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
 INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
 INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf
+INPUT ./aux/_minted/B0D08B51AFF52FB8A7F77B5CB96120B0.highlight.minted
+INPUT ./aux/_minted/B0D08B51AFF52FB8A7F77B5CB96120B0.highlight.minted
+INPUT aux/_minted/B0D08B51AFF52FB8A7F77B5CB96120B0.highlight.minted
+INPUT ./aux/_minted/D52DF00150ADCD6A94F6BB12BFB53094.highlight.minted
+INPUT ./aux/_minted/D52DF00150ADCD6A94F6BB12BFB53094.highlight.minted
+INPUT aux/_minted/D52DF00150ADCD6A94F6BB12BFB53094.highlight.minted
+INPUT ./aux/_minted/B67C04ABF75E714C7ADCEF22DA2737BE.highlight.minted
+INPUT ./aux/_minted/B67C04ABF75E714C7ADCEF22DA2737BE.highlight.minted
+INPUT aux/_minted/B67C04ABF75E714C7ADCEF22DA2737BE.highlight.minted
+INPUT ./aux/_minted/923DD613BB54A501C55E67A77389ECB1.highlight.minted
+INPUT ./aux/_minted/923DD613BB54A501C55E67A77389ECB1.highlight.minted
+INPUT aux/_minted/923DD613BB54A501C55E67A77389ECB1.highlight.minted
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png
+INPUT ./aux/_minted/EEC01EFE0269FBB7D5D5DFFE98ADCFA6.highlight.minted
+INPUT ./aux/_minted/EEC01EFE0269FBB7D5D5DFFE98ADCFA6.highlight.minted
+INPUT aux/_minted/EEC01EFE0269FBB7D5D5DFFE98ADCFA6.highlight.minted
+INPUT ./aux/_minted/AA49A703447DD63A0405D377CB1369CA.highlight.minted
+INPUT ./aux/_minted/AA49A703447DD63A0405D377CB1369CA.highlight.minted
+INPUT aux/_minted/AA49A703447DD63A0405D377CB1369CA.highlight.minted
+INPUT ./aux/_minted/44A32C14781151AD5B04B9ABB24CABF5.highlight.minted
+INPUT ./aux/_minted/44A32C14781151AD5B04B9ABB24CABF5.highlight.minted
+INPUT aux/_minted/44A32C14781151AD5B04B9ABB24CABF5.highlight.minted
+INPUT ./aux/_minted/2FAC7C35A87815F81F5DC542F78555F1.highlight.minted
+INPUT ./aux/_minted/2FAC7C35A87815F81F5DC542F78555F1.highlight.minted
+INPUT aux/_minted/2FAC7C35A87815F81F5DC542F78555F1.highlight.minted
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
+INPUT /home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf
 INPUT aux/relatório.aux
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
@@ -427,7 +468,9 @@ INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi1000.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi1095.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb

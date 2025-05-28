@@ -1,0 +1,36 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{1747447570318}\PYG{l+s}{\PYGZsq{}}
+\PYG{+w}{  }\PYG{n+nt}{alias}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{Climatização}
+\PYG{+w}{  }\PYG{n+nt}{description}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{\PYGZsq{}}
+\PYG{+w}{  }\PYG{n+nt}{triggers}\PYG{p}{:}
+\PYG{+w}{  }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{trigger}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{state}
+\PYG{+w}{    }\PYG{n+nt}{entity\PYGZus{}id}\PYG{p}{:}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor.temperatura}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{input\PYGZus{}number.temperatura\PYGZus{}alvo}
+\PYG{+w}{  }\PYG{n+nt}{conditions}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{[}\PYG{p+pIndicator}{]}
+\PYG{+w}{  }\PYG{n+nt}{actions}\PYG{p}{:}
+\PYG{+w}{  }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{choose}\PYG{p}{:}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{conditions}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{condition}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{numeric\PYGZus{}state}
+\PYG{+w}{        }\PYG{n+nt}{entity\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor.temperatura}
+\PYG{+w}{        }\PYG{n+nt}{above}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{input\PYGZus{}number.temperatura\PYGZus{}alvo}
+\PYG{+w}{        }\PYG{n+nt}{below}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{51}
+\PYG{+w}{      }\PYG{n+nt}{sequence}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{action}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{switch.turn\PYGZus{}on}
+\PYG{+w}{        }\PYG{n+nt}{metadata}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{\PYGZob{}}\PYG{p+pIndicator}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nt}{data}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{\PYGZob{}}\PYG{p+pIndicator}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nt}{target}\PYG{p}{:}
+\PYG{+w}{          }\PYG{n+nt}{entity\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{switch.climatizacao}
+\PYG{+w}{    }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{conditions}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{condition}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{numeric\PYGZus{}state}
+\PYG{+w}{        }\PYG{n+nt}{entity\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{sensor.temperatura}
+\PYG{+w}{        }\PYG{n+nt}{below}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{input\PYGZus{}number.temperatura\PYGZus{}alvo}
+\PYG{+w}{        }\PYG{n+nt}{above}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{0}\PYG{l+s}{\PYGZsq{}}
+\PYG{+w}{      }\PYG{n+nt}{sequence}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{action}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{switch.turn\PYGZus{}off}
+\PYG{+w}{        }\PYG{n+nt}{metadata}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{\PYGZob{}}\PYG{p+pIndicator}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nt}{data}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{\PYGZob{}}\PYG{p+pIndicator}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n+nt}{target}\PYG{p}{:}
+\PYG{+w}{          }\PYG{n+nt}{entity\PYGZus{}id}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{switch.climatizacao}
+\PYG{+w}{  }\PYG{n+nt}{mode}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{single}
+\end{MintedVerbatim}

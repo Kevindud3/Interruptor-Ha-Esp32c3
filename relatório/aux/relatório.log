@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.5.17)  25 MAY 2025 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.5.17)  28 MAY 2025 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1037,10 +1037,10 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 \pydata@fh@_EE04E552E7F9F73E3181F1690D41522D.data.minted=\write6
 \openout6 = `_EE04E552E7F9F73E3181F1690D41522D.data.minted'.
 
-runsystem(latexminted config  --timestamp 20250525141300 EE04E552E7F9F73E3181F1690D41522D)...executed safely (allowed).
+runsystem(latexminted config  --timestamp 20250528183904 EE04E552E7F9F73E3181F1690D41522D)...executed safely (allowed).
 
  (aux/_EE04E552E7F9F73E3181F1690D41522D.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250525141300 EE04E552E7F9F73E3181F1690D41522D)...executed safely (allowed).
+runsystem(latexminted cleanconfig  --timestamp 20250528183904 EE04E552E7F9F73E3181F1690D41522D)...executed safely (allowed).
 
  (./aux/_minted/default.style.minted) (./aux/_minted/E458457E142974A2643995294E86E7D0.highlight.minted
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
@@ -1074,8 +1074,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [6])
 
 [7] (./aux/_minted/642618616AF6C43D1150AA3F2CA2606A.highlight.minted)
-Overfull \hbox (24.47914pt too wide) in paragraph at lines 334--337
-\T1/cmr/m/n/10 Com essa con-fi-gu-ra-��o, � cri-ada uma en-ti-dade do tipo \T1/cmr/m/it/10 switch \T1/cmr/m/n/10 que pu-blica o va-lor \T1/cmtt/m/n/10 "1" \T1/cmr/m/n/10 no t�-pico \T1/cmtt/m/n/10 interruptor/switch
+Overfull \hbox (24.92348pt too wide) in paragraph at lines 334--337
+\T1/cmr/m/n/10 Com essa con-fi-gu-ra-��o, � cri-ada uma en-ti-dade do tipo \T1/cmr/m/it/10 switch \T1/cmr/m/n/10 que pu-blica o va-lor \T1/cmr/m/it/10 "1" \T1/cmr/m/n/10 no t�-pico \T1/cmtt/m/n/10 interruptor/switch
  []
 
 (./aux/_minted/C1A83D0FA21A7891F62885A114359050.highlight.minted
@@ -1131,12 +1131,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) h
                                                   \__shipout_drop_firstpage_...
 l.583 \clearpage
                 ]
-<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf, id=116, 845.04686pt x 597.50786pt>
+<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf, id=118, 845.04686pt x 597.50786pt>
 File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf Graphic file (type pdf)
 <use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf>
 Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf  used on input line 590.
 (pdftex.def)             Requested size: 845.0448pt x 597.5064pt.
-<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf, id=118, page=1, 845.04686pt x 597.50786pt>
+<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf, id=120, page=1, 845.04686pt x 597.50786pt>
 File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf Graphic file (type pdf)
 <use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf, page 1>
 Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf , page1 used on input line 590.
@@ -1166,25 +1166,82 @@ Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Tr
 (pdftex.def)             Requested size: 614.326pt x 434.3719pt.
 [15
 
- </home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf>] (aux/relatório.aux)
+ </home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/LampadaMqtt/output.pdf>] (./aux/_minted/B0D08B51AFF52FB8A7F77B5CB96120B0.highlight.minted) (./aux/_minted/D52DF00150ADCD6A94F6BB12BFB53094.highlight.minted)
+
+[16] (./aux/_minted/B67C04ABF75E714C7ADCEF22DA2737BE.highlight.minted) (./aux/_minted/923DD613BB54A501C55E67A77389ECB1.highlight.minted)
+
+[17]
+<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png, id=149, 576.1525pt x 378.41376pt>
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png Graphic file (type png)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png  used on input line 686.
+(pdftex.def)             Requested size: 424.79712pt x 279.01132pt.
+
+
+[18
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.689 \clearpage
+                 </home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/relatório/Temperatura.png>] (./aux/_minted/EEC01EFE0269FBB7D5D5DFFE98ADCFA6.highlight.minted) (./aux/_minted/AA49A703447DD63A0405D377CB1369CA.highlight.minted
+
+[19
+
+]) (./aux/_minted/44A32C14781151AD5B04B9ABB24CABF5.highlight.minted) (./aux/_minted/2FAC7C35A87815F81F5DC542F78555F1.highlight.minted)
+
+[20]
+<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, id=166, 845.04686pt x 597.50786pt>
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf  used on input line 777.
+(pdftex.def)             Requested size: 845.0448pt x 597.5064pt.
+<~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, id=168, page=1, 845.04686pt x 597.50786pt>
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, page 1>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf , page1 used on input line 777.
+(pdftex.def)             Requested size: 845.0448pt x 597.5064pt.
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, page 1>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf , page1 used on input line 777.
+(pdftex.def)             Requested size: 614.326pt x 434.3719pt.
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, page 1>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf , page1 used on input line 777.
+(pdftex.def)             Requested size: 614.326pt x 434.3719pt.
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, page 1>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf , page1 used on input line 777.
+(pdftex.def)             Requested size: 614.326pt x 434.3719pt.
+
+
+File: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf Graphic file (type pdf)
+<use ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf, page 1>
+Package pdftex.def Info: ~/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf , page1 used on input line 777.
+(pdftex.def)             Requested size: 614.326pt x 434.3719pt.
+[21
+
+
+ </home/fernando/Engenharia Elétrica/5 Semestre/Projeto Integrador/Trabalho/ClimatizaçãoMqtt/output.pdf>] (aux/relatório.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 49286 strings out of 475151
- 1154091 string characters out of 5766386
- 1901228 words of memory out of 5000000
- 71679 multiletter control sequences out of 15000+600000
- 570752 words of font info for 61 fonts, out of 8000000 for 9000
+ 49384 strings out of 475151
+ 1159418 string characters out of 5766386
+ 1901121 words of memory out of 5000000
+ 71738 multiletter control sequences out of 15000+600000
+ 571568 words of font info for 62 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,17n,107p,632b,1000s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on aux/relatório.pdf (15 pages, 323651 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on aux/relatório.pdf (21 pages, 388129 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 148 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 257 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
