@@ -1,8 +1,8 @@
-//A conexão wifi é feita aqui
+// A conexão wifi é feita aqui
 #include "wifi_manager.h"
 
-const char* ssid = "HA AP";
-const char* password = "12345678";
+const char *ssid = "HA AP";
+const char *password = "12345678";
 
 void connectToWiFi() {
   WiFi.begin(ssid, password);

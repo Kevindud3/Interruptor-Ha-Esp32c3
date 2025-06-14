@@ -1,9 +1,10 @@
-//A conexão com o cliente MQTT é feita aqui, a inscrição de tópicos de leitura é feita aqui.
+// A conexão com o cliente MQTT é feita aqui, a inscrição de tópicos de leitura
+// é feita aqui.
 #include "mqtt_manager.h"
 
-const char* mqtt_server = "192.168.88.253";
-const char* mqtt_user = "mosquito";
-const char* mqtt_password = "12345";
+const char *mqtt_server = "192.168.88.253";
+const char *mqtt_user = "mosquito";
+const char *mqtt_password = "12345";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -26,6 +27,4 @@ void setupMQTT() {
   }
 }
 
-void mqttLoop() {
-  client.loop();
-}
+void mqttLoop() { client.loop(); }

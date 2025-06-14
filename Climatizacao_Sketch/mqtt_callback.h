@@ -1,8 +1,7 @@
-//As funções callback são definidas nesse cabeçalho
-#include "mqtt_manager.h"
+// As funções callback são definidas nesse cabeçalho
 #include "Arduino.h"
+#include "mqtt_manager.h"
 
 #pragma once
 
-
-void callback(char* topic, byte* payload, unsigned int length);
+void callback(char *topic, byte *payload, unsigned int length);

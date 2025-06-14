@@ -1,8 +1,9 @@
-//As leituras do radar são feitas aqui, se presença é detectada é publicado no tópico interruptor/radar
-//O tempo entre as leituras pode ser ajustado na função readAndPublishRadar
-//São feitas leituras da distancia e da energia do objeto rastreado, os valores são convertidos em strings
-//e publicados em seus respectivos tópicos
-//É feita a inicialização de um novo serial aqui para a comunicação com o microcontrolador do radar.
+// As leituras do radar são feitas aqui, se presença é detectada é publicado no
+// tópico interruptor/radar O tempo entre as leituras pode ser ajustado na
+// função readAndPublishRadar São feitas leituras da distancia e da energia do
+// objeto rastreado, os valores são convertidos em strings e publicados em seus
+// respectivos tópicos É feita a inicialização de um novo serial aqui para a
+// comunicação com o microcontrolador do radar.
 #include "radar_sensor.h"
 
 #define MONITOR_SERIAL Serial
@@ -12,7 +13,7 @@
 
 ld2410 radar;
 uint32_t lastReading = 0;
-bool presenceState = false;  // Flag to track the presence state
+bool presenceState = false; // Flag to track the presence state
 
 void initRadar() {
   RADAR_SERIAL.begin(256000, SERIAL_8N1, RADAR_RX_PIN, RADAR_TX_PIN);
@@ -30,15 +31,14 @@ void readAndPublishRadar() {
     radar.read();
 
     bool presenceDetected = radar.presenceDetected();
-    
+
     // If presence changes, publish accordingly
     if (presenceDetected && !presenceState) {
       client.publish("interruptor/radar", "Presença Detectada");
-      presenceState = true;  // Update the state to "presence detected"
-    } 
-    else if (!presenceDetected && presenceState) {
+      presenceState = true; // Update the state to "presence detected"
+    } else if (!presenceDetected && presenceState) {
       client.publish("interruptor/radar", "Presença Não Detectada");
-      presenceState = false;  // Update the state to "no presence"
+      presenceState = false; // Update the state to "no presence"
     }
 
     if (presenceDetected) {
